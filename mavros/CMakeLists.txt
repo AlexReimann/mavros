@@ -49,7 +49,12 @@ include(MavrosMavlink)
 # detect if sensor_msgs has BatteryState.msg
 # http://answers.ros.org/question/223769/how-to-check-that-message-exists-with-catkin-for-conditional-compilation-sensor_msgsbatterystate/
 list(FIND sensor_msgs_MESSAGE_FILES "msg/BatteryState.msg" BATTERY_STATE_MSG_IDX)
+
+message(STATUS "sensor_msgs_MESSAGE_FILES: ${sensor_msgs_MESSAGE_FILES}")
+message(STATUS "BATTERY_STATE_MSG_IDX: ${BATTERY_STATE_MSG_IDX}")
+
 if(${BATTERY_STATE_MSG_IDX} GREATER -1)
+  message(STATUS "Set DHAVE_SENSOR_MSGS_BATTERYSTATE_MSG")
   add_definitions(
     -DHAVE_SENSOR_MSGS_BATTERYSTATE_MSG
   )
